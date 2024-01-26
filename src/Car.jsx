@@ -8,6 +8,8 @@ import { useVehicleControls} from "./utils/useVehicleControls";
 import { useFrame } from "@react-three/fiber";
 import useFollowCam from "./utils/useFollowCam";
 import { Vector3 } from "three";
+import { CarBody } from "./components/CarBody";
+import { Wheel } from "./components/Wheel";
 
 // 사용자 인터페이스를 통해 차체의 속성을 조정할 수 있으며, 차량의 물리적 동작과 카메라 움직임을 제어
 
@@ -79,12 +81,12 @@ const Car = () => {
     return( // 차량의 시각적 표현을 정의. DummyCarBody와 DummyWheel 컴포넌트를 사용하여 차체와 바퀴를 시각화
         <group ref={vehicle}> 
             <group ref={chassisBody}> 
-                <DummyCarBody width={chassisBodyValue.width} height={chassisBodyValue.height} front={chassisBodyValue.front * 2}/>
+              <CarBody />
             </group>
-            <DummyWheel wheelRef={wheels[0]} radius={wheelRadius}/>
-            <DummyWheel wheelRef={wheels[1]} radius={wheelRadius}/>
-            <DummyWheel wheelRef={wheels[2]} radius={wheelRadius}/>
-            <DummyWheel wheelRef={wheels[3]} radius={wheelRadius}/>
+            <Wheel wheelRef={wheels[0]} radius={wheelRadius}/>
+            <Wheel wheelRef={wheels[1]} radius={wheelRadius}/>
+            <Wheel wheelRef={wheels[2]} radius={wheelRadius}/>
+            <Wheel wheelRef={wheels[3]} radius={wheelRadius}/>
         </group>
     )
 }
