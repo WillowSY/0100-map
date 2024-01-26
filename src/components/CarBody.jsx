@@ -27,7 +27,7 @@ export function CarBody() {
         <group position={[-0.001, 0.246, -0.031]} rotation={[0, 0, 0]} scale={0.005}>
             <mesh geometry={nodes.Lamborghini_Aventador_Body.geometry} material={materials._Lamborghini_AventadorLamborghini_Aventador_BodySG} />
         </group>
-        <group>
+        <group position={[-0.001, 0.246, -0.031]} rotation={[0, 0, 0]} scale={0.005}>
             <mesh geometry={nodes.Lamborghini_Aventador_Glass.geometry} material={materials._Lamborghini_AventadorLamborghini_Aventador_GlassSG} />
         </group>
     </group>
