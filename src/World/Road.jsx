@@ -1,25 +1,22 @@
 import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import { Clone, useGLTF } from '@react-three/drei'
 import { motion } from "framer-motion-3d";
 
 useGLTF.preload(`/assets/models/world/road.glb`)
-
-export default function Road(props) {
+useGLTF.preload(`/assets/models/world/TrackKit.glb`)
+export default function Road({position}) {
   const { nodes, materials } = useGLTF('/assets/models/world/road.glb')
-  return (
-    <motion.group
-      initial={{scale: 0}}
-      animate={{scale: 0.04}}
-      transition={{delay: 1.2}}
-      {...props}>
-      <mesh receiveShadow geometry={nodes.Box002_RoadRim_0.geometry} material={materials.RoadRim} />
-      <mesh receiveShadow geometry={nodes.Box002_RoadRim_0_1.geometry} material={materials['RoadRim.001']} />
-      <mesh receiveShadow geometry={nodes.Box002_RoadRim_0_2.geometry} material={materials['RoadRim.002']} />
-      <mesh receiveShadow geometry={nodes.Box002_RoadRim_0_3.geometry} material={materials.RoadBase} />
-      <mesh receiveShadow geometry={nodes.Box002_RoadRim_0_4.geometry} material={materials['RoadRim.005']} />
-      <mesh receiveShadow geometry={nodes.Box002_RoadRim_0_5.geometry} material={materials['RoadRim.004']} />
-      <mesh receiveShadow geometry={nodes.Box002_RoadRim_0_6.geometry} material={materials['RoadRim.003']} />
-      <mesh receiveShadow geometry={nodes.Box002_RoadRim_0_7.geometry} material={materials['RoadBase.001']} />
-    </motion.group>
-  )
+  const trackkit = useGLTF('/assets/models/world/TrackKit.glb')
+  const hambureger = useGLTF('/assets/models/hamburger.glb')
+  const Roadblock = useGLTF('/assets/models/world/Roadblock.glb')
+    
+  return <>
+    <mesh>
+      <Clone castShadow object={Roadblock.scene} scale={4} position={[5, 0, 0]} rotation={[0, Math.PI/2, 0]}/>
+      <Clone castShadow object={Roadblock.scene} scale={4} position={[-5, 0, 0]} rotation={[0, Math.PI/2, 0]}/>
+      <Clone castShadow object={Roadblock.scene} scale={4} position={[0, 0, 5]} rotation={[0, Math.PI, 0]}/>
+      <Clone castShadow object={Roadblock.scene} scale={4} position={[0, 0, -5]} rotation={[0, Math.PI, 0]}/>
+      
+    </mesh>
+  </>
 }

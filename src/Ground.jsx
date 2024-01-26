@@ -1,6 +1,5 @@
 import React from 'react'
 import { usePlane } from "@react-three/cannon";
-import Road from './World/Road.jsx'
 
 export function Ground(props) {
 
@@ -16,7 +15,7 @@ export function Ground(props) {
     >
     <planeGeometry args={[15, 15]} />
     <meshStandardMaterial color="white" opacity={0} transparent/>
-    <Road/>
+    
   </mesh>
   )
 }
